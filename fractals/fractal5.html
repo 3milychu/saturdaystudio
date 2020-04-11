@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
 </head>
 <style type="text/css">
-	body, html {
-		top:0;
-		left:0;
-		margin:0;
-		background-color:black;
-	}
-	canvas {
-/*		animation: rotate 5s ease-in-out infinite;*/
-/*		transform-origin:50% 50%;*/
-	}
-	@keyframes rotate {
-		0%{
-			transform:rotate(0deg);
-			transform:scale(1);
-		}
-		50%{
-			transform:scale(2);
-		}
-		100%{
-			transform:rotate(360deg);
-			transform:scale(1);
-		}
-	}
-	canvas, path, g, .line {
-		transition:0.25 linear;
-	}
+    body, html {
+        top:0;
+        left:0;
+        margin:0;
+        background-color:black;
+    }
+    canvas {
+/*      animation: rotate 5s ease-in-out infinite;*/
+/*      transform-origin:50% 50%;*/
+    }
+    @keyframes rotate {
+        0%{
+            transform:rotate(0deg);
+            transform:scale(1);
+        }
+        50%{
+            transform:scale(2);
+        }
+        100%{
+            transform:rotate(360deg);
+            transform:scale(1);
+        }
+    }
+    canvas, path, g, .line {
+        transition:0.25 linear;
+    }
 </style>
 <body>
 
@@ -39,24 +39,24 @@
 let angle
 let angleSlider
 let startWeight = 8
-	w = window.innerWidth*2
-	h = window.innerHeight*2
+    w = window.innerWidth*2
+    h = window.innerHeight*2
 let counter = 0.450
 let x = w
 let y = h
 let xspeed = 5;
 let yspeed = 2;
-	r = 25;
-	r_yn = 0;
-	startWeight; 
-	bg = 'rgb(105,192,255)'
-	c1 = Math.floor(Math.random()*120)+80;
-	rot = 0
+    r = 25;
+    r_yn = 0;
+    startWeight; 
+    bg = 'rgb(105,192,255)'
+    c1 = Math.floor(Math.random()*120)+80;
+    rot = 0
 function setup() {
     createCanvas(w, h)
 }
 function draw() {
-	background(bg)
+    background(bg)
     translate(w/4, h/4)
     rot++
     rotate(rot)
@@ -66,21 +66,21 @@ function draw() {
     c3 = Math.floor(Math.random()*100)+4
     counter = parseFloat(Math.floor(Math.random()* PI/2) + PI/5)
     stroke('rgb(255,132,130)')
-   	if(r_yn<200){
-   		c1 = Math.floor(Math.random()*120)+80
-   		angle = counter
-   	}
+    if(r_yn<200){
+        c1 = Math.floor(Math.random()*120)+80
+        angle = counter
+    }
     // console.log(r_yn)
     if(r_yn<500){
-		startWeight = Math.floor(Math.random()*8)+5
-    	branch(c1*2, startWeight)
+        startWeight = Math.floor(Math.random()*8)+5
+        branch(c1*2, startWeight)
     } else {
-		startWeight = startWeight
-    	branch(c1*2, startWeight)
+        startWeight = startWeight
+        branch(c1*2, startWeight)
     }
 
     // translate(0, -150)
-	r = Math.floor(Math.random()*25)+300
+    r = Math.floor(Math.random()*25)+300
 }
 function branch(length, weightIn) {
     let weight = weightIn - 1

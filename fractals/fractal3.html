@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
 </head>
 <style type="text/css">
-	body, html {
-		top:0;
-		left:0;
-		margin:0;
-		background-color:black;
-	}
-	canvas {
-/*		animation: rotate 10s ease-in-out infinite;*/
-		transform-origin:0% 50%;
-	}
-	@keyframes rotate {
-		0%{
-			transform:rotateY(0deg);
-			transform:scale(1);
-		}
-		50%{
+    body, html {
+        top:0;
+        left:0;
+        margin:0;
+        background-color:black;
+    }
+    canvas {
+/*      animation: rotate 10s ease-in-out infinite;*/
+        transform-origin:0% 50%;
+    }
+    @keyframes rotate {
+        0%{
+            transform:rotateY(0deg);
+            transform:scale(1);
+        }
+        50%{
             transform:rotateY(180deg);
-			transform:scale(2);
-		}
-		100%{
-			transform:rotateY(180deg);
-			transform:scale(1);
-		}
-	}
-	canvas, path, g, .line {
-		transition:0.25 linear;
-	}
+            transform:scale(2);
+        }
+        100%{
+            transform:rotateY(180deg);
+            transform:scale(1);
+        }
+    }
+    canvas, path, g, .line {
+        transition:0.25 linear;
+    }
 </style>
 <body>
 
@@ -40,25 +40,25 @@
 let angle
 let angleSlider
 let startWeight = 8
-	w = window.innerWidth*2
-	h = window.innerHeight*2
+    w = window.innerWidth*2
+    h = window.innerHeight*2
 let counter = 0.450
 let x = w
 let y = h
 let xspeed = 5;
 let yspeed = 2;
-	r = 25;
-	r_yn = 0;
-	startWeight; 
-	bg = 900
-	c1 = Math.floor(Math.random()*120)+80;
-	rot = 0
+    r = 25;
+    r_yn = 0;
+    startWeight; 
+    bg = 900
+    c1 = Math.floor(Math.random()*120)+80;
+    rot = 0
 function setup() {
     createCanvas(w, h)
 }
 function draw() {
-	console.log(bg)
-	background(bg)
+    console.log(bg)
+    background(bg)
     translate(w/4, h/1.8)
     r_yn = Math.floor(Math.random()*500)+0
     r_angle = Math.floor(Math.random()*360)+0
@@ -66,28 +66,28 @@ function draw() {
     c3 = Math.floor(Math.random()*100)+4
     counter = parseFloat(Math.floor(Math.random()* PI) + PI/5)
     if (r_yn>290){
-    	bg = 'rgb('+c1+","+c2+","+ (c3+30)+")"
-    	background('rgb('+c1+","+c2+","+ (c3+30)+")")
-    	stroke(900)
+        bg = 'rgb('+c1+","+c2+","+ (c3+30)+")"
+        background('rgb('+c1+","+c2+","+ (c3+30)+")")
+        stroke(900)
     }
-   	if(r_yn<500){
-   		c1 = Math.floor(Math.random()*120)+80
-   		angle = counter
-   		 stroke(c1, (c3+40), (c1-20))
-   	}
+    if(r_yn<500){
+        c1 = Math.floor(Math.random()*120)+80
+        angle = counter
+         stroke(c1, (c3+40), (c1-20))
+    }
     // console.log(r_yn)
     if(r_yn<500){
-		startWeight = Math.floor(Math.random()*8)+5
-    	branch(c1*2, startWeight)
+        startWeight = Math.floor(Math.random()*8)+5
+        branch(c1*2, startWeight)
         rotate(0)
     } else {
-		startWeight = startWeight
-    	branch(c1*2, startWeight)
+        startWeight = startWeight
+        branch(c1*2, startWeight)
         rotate(180)
     }
 
     // translate(0, -150)
-	r = Math.floor(Math.random()*25)+300
+    r = Math.floor(Math.random()*25)+300
 }
 function branch(length, weightIn) {
     let weight = weightIn - 1
