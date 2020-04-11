@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+</head>
+<style type="text/css">
+    body, html {
+        top:0;
+        left:0;
+        margin:0;
+        background-color:black;
+    }
+    canvas {
+/*      animation: rotate 5s ease-in-out infinite;*/
+/*      transform-origin:50% 50%;*/
+    }
+    @keyframes rotate {
+        0%{
+            transform:rotate(0deg);
+            transform:scale(1);
+        }
+        50%{
+            transform:scale(2);
+        }
+        100%{
+            transform:rotate(360deg);
+            transform:scale(1);
+        }
+    }
+    canvas, path, g, .line {
+        transition:0.25 linear;
+    }
+</style>
+<body>
+
+</body>
+<script type="text/javascript">
+let angle
+let angleSlider
+let startWeight = 8
+    w = window.innerWidth*2
+    h = window.innerHeight*2
+let counter = 0.450
+let x = w
+let y = h
+let xspeed = 5;
+let yspeed = 2;
+    r = 25;
+    r_yn = 0;
+    startWeight; 
+    bg = '#FC264C'
+    c1 = Math.floor(Math.random()*120)+80;
+    rot = 0
+function setup() {
+    createCanvas(w, h)
+}
+function draw() {
+    background(bg)
+    translate(w/4, h/4)
+    rot++
+    rotate(rot)
+    r_yn = Math.floor(Math.random()*500)+0
+    r_angle = Math.floor(Math.random()*360)+0
+    c2 = Math.floor(Math.random()*80)+30
+    c3 = Math.floor(Math.random()*100)+4
+    counter = parseFloat(Math.floor(Math.random()* PI/2) + PI/5)
+    stroke(0)
+    if(r_yn<200){
+        c1 = Math.floor(Math.random()*120)+80
+        angle = counter
+    }
+    // console.log(r_yn)
+    if(r_yn<500){
+        startWeight = Math.floor(Math.random()*8)+5
+        branch(150, startWeight)
+    } else {
+        startWeight = startWeight
+        branch(150, startWeight)
+    }
+
+    // translate(0, -150)
+    r = Math.floor(Math.random()*25)+300
+}
+function branch(length, weightIn) {
+    let weight = weightIn - 1.5
+    strokeWeight(weight)
+    line(0,0,0, -length/2)
+    translate(0, -length)
+    if (length > 8) {
+        push()
+            rotate(-angle)
+            branch(length * 0.67, weight)
+        pop()
+        push()
+            rotate(-angle)
+            branch(length * 0.67, weight)
+        pop()
+        push()
+            rotate(-angle -angle)
+            branch(length * 0.67, weight)
+        pop()
+    }
+
+}
+
+
+</script>
+</html>
