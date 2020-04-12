@@ -11,6 +11,27 @@
         margin:0;
         background-color:black;
     }
+    canvas {
+/*      animation: rotate 10s ease-in-out infinite;*/
+        transform-origin:0% 50%;
+    }
+    @keyframes rotate {
+        0%{
+            transform:rotateY(0deg);
+            transform:scale(1);
+        }
+        50%{
+            transform:rotateY(180deg);
+            transform:scale(2);
+        }
+        100%{
+            transform:rotateY(180deg);
+            transform:scale(1);
+        }
+    }
+    canvas, path, g, .line {
+        transition:0.25 linear;
+    }
 </style>
 <body>
 
@@ -21,7 +42,7 @@ let angleSlider
 let startWeight = 8
     w = window.innerWidth*2
     h = window.innerHeight*2
-let counter = 0.450
+let counter =Math.PI/5
 let x = w
 let y = h
 let xspeed = 5;
@@ -37,45 +58,30 @@ function setup() {
     createCanvas(w, h)
 }
 function draw() {
-    console.log(bg)
-    background(bg)
-    translate(w/3, h/3)
-    rot++
-    rotate(rot)
-    r_yn = Math.floor(Math.random()*500)+0
+    // background(0)
     c2++
     if(c2 == 255 ){
         c2 = 30
     }
-    bg = 'rgb('+(c2+100)+","+(c2+150)+","+ (c2-5)+")"
-    stroke(c1+200, (c2+40), (c2-20))
-    counter = parseFloat(Math.floor(Math.random()* PI/3) + PI/5)
-    if(r_yn<50){
-        c1 = Math.floor(Math.random()*120)+80
-        angle = counter
-    }
-    // console.log(r_yn)
-    if(r_yn<300){
-        startWeight = Math.floor(Math.random()*8)+5
-        branch(width/20, startWeight)
-    } else {
-        startWeight = startWeight
-        branch(width/20, startWeight)
-    }
-
-    // translate(0, -150)
-    r = Math.floor(Math.random()*25)+300
+    translate(w/4, h/1.8)
+    counter = counter + parseFloat(0.01)
+    angle = counter
+    c1 = Math.floor(Math.random()*120)+80
+    stroke(c1, c2, c2+40)
+    // if(r_yn<500){
+    //     startWeight = Math.floor(Math.random()*8)+5
+    //     rotate(0)
+    // } else {
+    //     rotate(180)
+    // }
+    branch(250, startWeight)
 }
 function branch(length, weightIn) {
     let weight = weightIn - 1
     strokeWeight(weight)
-    line(0,0,0, -length/2)
-    translate(0, -length)
+    line(0,0,0, -length*5)
+    translate(0, -length*2)
     if (length > 8) {
-        push()
-            rotate(-angle)
-            branch(length * 0.67, weight)
-        pop()
         push()
             rotate(-angle)
             branch(length * 0.67, weight)
@@ -84,6 +90,7 @@ function branch(length, weightIn) {
             rotate(-angle -angle)
             branch(length * 0.67, weight)
         pop()
+
     }
 
 }

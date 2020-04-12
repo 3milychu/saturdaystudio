@@ -13,7 +13,7 @@
     }
     canvas {
 /*      animation: rotate 10s ease-in-out infinite;*/
-        transform-origin:0% 50%;
+/*        transform-origin:0% 50%;*/
     }
     @keyframes rotate {
         0%{
@@ -42,7 +42,7 @@ let angleSlider
 let startWeight = 8
     w = window.innerWidth*2
     h = window.innerHeight*2
-let counter =Math.PI/2
+let counter =Math.PI/5
 let x = w
 let y = h
 let xspeed = 5;
@@ -58,7 +58,7 @@ function setup() {
     createCanvas(w, h)
 }
 function draw() {
-    background(0)
+    // background(0)
     c2++
     if(c2 == 255 ){
         c2 = 30
@@ -79,18 +79,21 @@ function draw() {
 function branch(length, weightIn) {
     let weight = weightIn - 1
     strokeWeight(weight)
-    line(0,0,0, -length/2)
+    line(0,0,0, -length/5)
     translate(0, -length)
     if (length > 8) {
         push()
-            rotate(angle -angle)
+            rotate(angle)
             branch(length * 0.67, weight)
         pop()
-        push()
-            rotate(-angle -angle)
-            branch(length * 0.67, weight)
-        pop()
-
+        // push()
+        //     rotate(-angle -angle)
+        //     branch(length * 0.67, weight)
+        // pop()
+        // push()
+        //     rotate(-angle -angle)
+        //     branch(length * 0.67, weight)
+        // pop()
     }
 
 }
