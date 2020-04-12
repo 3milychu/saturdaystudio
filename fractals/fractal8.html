@@ -57,7 +57,7 @@ function setup() {
 function draw() {
     background(bg)
     frameRate(fr);
-    translate(w/4, h/4)
+    translate(w/4, h/2)
     rot++
     // rotate(rot)
     r_yn = Math.floor(Math.random()*500)+0
@@ -76,10 +76,10 @@ function draw() {
     }
     if(r_yn<100){
         startWeight = Math.floor(Math.random()*11)+5
-        branch(150, startWeight)
+        branch(250, startWeight)
     } else {
         startWeight = startWeight
-        branch(150, startWeight)
+        branch(250, startWeight)
     }
 }
 function branch(length, weightIn) {
@@ -89,17 +89,17 @@ function branch(length, weightIn) {
     translate(0, -length)
     if (length > 8) {
         push()
-            rotate(-angle)
+            rotate(angle)
             branch(length * 0.67, weight)
         pop()
         push()
             rotate(-angle)
             branch(length * 0.67, weight)
         pop()
-        push()
-            rotate(-angle -angle)
-            branch(length * 0.67, weight)
-        pop()
+        // push()
+        //     rotate(-angle -angle)
+        //     branch(length * 0.67, weight)
+        // pop()
     }
 
 }
