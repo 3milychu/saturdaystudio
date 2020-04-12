@@ -68,24 +68,25 @@ function draw() {
         direction = 1
     }
      counter = (counter + parseFloat(0.01))*direction
+     angle = counter
     console.log(counter)
     stroke('#011C40')
     if(r_yn<200){
         c1 = Math.floor(Math.random()*120)+80
-        angle = counter
+        
     }
     if(r_yn<100){
         startWeight = Math.floor(Math.random()*11)+5
-        branch(250, startWeight)
+        branch(230, startWeight)
     } else {
         startWeight = startWeight
-        branch(250, startWeight)
+        branch(230, startWeight)
     }
 }
 function branch(length, weightIn) {
     let weight = weightIn - 1.5
     strokeWeight(weight)
-    line(0,0,0, -length/2)
+    line(0,0,0, -length)
     translate(0, -length)
     if (length > 8) {
         push()
